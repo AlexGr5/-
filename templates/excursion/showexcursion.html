@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Экскурсии</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="onetr">
+    <p class="onetr" th:text="${excursion.getNameExcursion() + ', ' + excursion.getDescription()}">VALUE</p>
+    <p class="onetr" th:text="${'Place Id: ' +  excursion.getPlace().getPK_Entity()}">VALUE</p>
+    <p class="onetr" th:text="${'Id excursion: ' + excursion.getPK_Excursion()}">VALUE</p>
+
+    <label>Guids:</label>
+    <div class="onetr" th:each="guide1 : ${excursion.guideList}">
+        <label th:text="${guide1.getGuide().getFirstName() + guide1.getGuide().getLastName() + ', id: ' + guide1.getGuide().getPK_Guide() }" > </label>
+    </div>
+</div>
+
+<br/>
+<a th:href="@{/excursion/{id}/edit(id=${excursion.getPK_Excursion()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/excursion/{id}(id=${excursion.getPK_Excursion()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="onetr">
+    <p class="onetr" th:text="${'id: ' + auditcontact.getPK_AuditContact()}">VALUE</p>
+    <p class="onetr" th:text="${auditcontact.getUser()}">VALUE</p>
+    <p class="onetr" th:text="${auditcontact.getDateEdit()}">VALUE</p>
+    <p class="onetr" th:text="${auditcontact.getTypeReqest()}">VALUE</p>
+    <p class="onetr" th:text="${auditcontact.getDateOfConnect()}">VALUE</p>
+    <p class="onetr" th:text="${auditcontact.getValueContact()}">VALUE</p>
+
+    <p class="onetr" th:text="${'id contact: ' + auditcontact.getContactAudit()?.getPK_Contact()}">VALUE</p>
+</div>
+
+
+<br/>
+<!--
+<a th:href="@{/auditcontact/{id}/edit(id=${auditcontact.getPK_AuditContact()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/auditcontact/{id}(id=${auditcontact.getPK_AuditContact()})}">
+    <input type="submit" value="Delete"/>
+</form>
+-->
+</body>
+</html>

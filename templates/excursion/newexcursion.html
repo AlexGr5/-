@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Экскурсии</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<form class="onetr" th:method="POST" th:action="@{/excursion}" th:object="${excursion}">
+    <label class="onetr" for="NameEx">Enter name excursion: </label>
+    <input class="onetr" type="text" th:field="*{NameExcursion}" id="NameEx"/>
+    <br/>
+    <label class="onetr" for="Descr">Enter description: </label>
+    <input class="onetr" type="text" th:field="*{Description}" id="Descr"/>
+    <br/>
+    <label class="onetr" for="IDplace">Enter id place: </label>
+    <input class="onetr" type="text" th:field="*{place.PK_Entity}" id="IDplace"/>
+    <br/>
+    <input class="onetr" type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>

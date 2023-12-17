@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<form class="onetr" th:method="POST" th:action="@{/contact}" th:object="${contact}">
+    <label class="onetr" for="Name">Enter value contact: </label>
+    <input class="onetr" type="text" th:field="*{ValueContact}" id="Name"/>
+    <br/>
+    <label class="onetr" for="Adr">Enter date of connection: </label>
+    <input class="onetr" type="text" th:field="*{DateOfConnect}" id="Adr"/>
+    <br/>
+    <label class="onetr" for="ido">Enter id human: </label>
+    <input class="onetr" type="text" th:field="*{humanContact.PK_Human}" id="ido"/>
+    <br/>
+    <label class="onetr" for="idb">Enter id type of contact: </label>
+    <input class="onetr" type="text" th:field="*{typeOfContact.PK_TypeOfContact}" id="idb"/>
+    <br/>
+    <label class="onetr" for="ids">Enter id subdivision: </label>
+    <input class="onetr" type="text" th:field="*{stateOfContact.PK_StateOfContact}" id="ids"/>
+    <br/>
+    <input class="onetr" type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>

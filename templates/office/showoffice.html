@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="onetr">
+    <p class="onetr" th:text="${office.getPK_Office()}">VALUE</p>
+    <p class="onetr" th:text="${office.getNumberOffice()}">VALUE</p>
+    <p class="onetr" th:text="${'id subdivision: ' + office.getSubdivisionOffice()?.PK_Subdivision}">VALUE</p>
+    <p class="onetr" th:text="${'id human: ' + office.getHumanOffice()?.PK_Human}">VALUE</p>
+
+</div>
+
+<br/>
+<a th:href="@{/office/{id}/edit(id=${office.getPK_Office()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/office/{id}(id=${office.getPK_Office()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

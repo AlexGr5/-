@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<form class="onetr" th:method="POST" th:action="@{/query}" th:object="${params}">
+    <label class="onetr" for="a">Enter first name: </label>
+    <input class="onetr" type="text" th:field="*{firstName}" id="a"/>
+    <br/>
+    <label class="onetr" for="b">Enter surname: </label>
+    <input class="onetr" type="text" th:field="*{surname}" id="b"/>
+    <br/>
+    <label class="onetr" for="c">Enter patronymic: </label>
+    <input class="onetr" type="text" th:field="*{patronymic}" id="c"/>
+    <br/>
+    <label class="onetr" for="d">Enter contact number: </label>
+    <input class="onetr" type="text" th:field="*{contactNumber}" id="d"/>
+    <br/>
+    <label class="onetr" for="e">Enter name job title: </label>
+    <input class="onetr" type="text" th:field="*{nameJobTitle}" id="e"/>
+    <br/>
+    <label class="onetr" for="f">Enter name organization: </label>
+    <input class="onetr" type="text" th:field="*{nameOrganization}" id="f"/>
+    <br/>
+    <label class="onetr" for="g">Enter name subdivision: </label>
+    <input class="onetr" type="text" th:field="*{nameSubdivision}" id="g"/>
+    <br/>
+    <label class="onetr" for="h">Enter address organization: </label>
+    <input class="onetr" type="text" th:field="*{addressOrganization}" id="h"/>
+    <br/>
+    <label class="onetr" for="i">Enter email subdivision: </label>
+    <input class="onetr" type="text" th:field="*{emailSubdivision}" id="i"/>
+    <br/>
+    <label class="onetr" for="j">Enter number office: </label>
+    <input class="onetr" type="text" th:field="*{numberOffice}" id="j"/>
+    <br/>
+    <input class="onetr" type="submit" value="Search!"/>
+</form>
+
+</body>
+</html>

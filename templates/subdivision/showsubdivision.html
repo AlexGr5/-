@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="onetr">
+    <p class="onetr" th:text="${'id: ' + subdivision.getPK_Subdivision()}">VALUE</p>
+    <p class="onetr" th:text="${subdivision.getNameSubdivision()}">VALUE</p>
+    <p class="onetr" th:text="${subdivision.getAbbreviation()}">VALUE</p>
+    <p class="onetr" th:text="${subdivision.getKodSubdivision()}">VALUE</p>
+    <p class="onetr" th:text="${subdivision.getEmail()}">VALUE</p>
+
+    <p class="onetr" th:text="${'id organization: ' + subdivision.getOrganizationSub()?.getPK_Organization()}">VALUE</p>
+    <p class="onetr" th:text="${'id brach: ' + subdivision.getBranchSub()?.getPK_Branch()}">VALUE</p>
+    <p class="onetr" th:text="${'id up subdivision: ' + subdivision?.getSubdivisionOne()?.getPK_Subdivision()}">VALUE</p>
+
+    <label>Внутренние подразделения:</label>
+    <div class="onetr" th:each="sub1 : ${subdivision.subsubdivisions}">
+        <label th:text="${sub1.getNameSubdivision() + sub1.getKodSubdivision() + ', id: ' + sub1.getPK_Subdivision() }" > </label>
+    </div>
+
+    <label>Ставки:</label>
+    <div class="onetr" th:each="rate1 : ${subdivision.rates}">
+        <label th:text="${rate1.getRateValue() + ', id: ' + rate1.getPK_Rate() }" > </label>
+    </div>
+
+    <label>Офисы:</label>
+    <div class="onetr" th:each="office1 : ${subdivision.offices}">
+        <label th:text="${office1.getNumberOffice() + ', id: ' + office1.getPK_Office() }" > </label>
+    </div>
+</div>
+
+<br/>
+<a th:href="@{/subdivision/{id}/edit(id=${subdivision.getPK_Subdivision()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/subdivision/{id}(id=${subdivision.getPK_Subdivision()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="onetr">
+    <p class="onetr" th:text="${'id: ' + human.getPK_Human()}">VALUE</p>
+    <p class="onetr" th:text="${human.getNameHuman()}">VALUE</p>
+    <p class="onetr" th:text="${human.getSurname()}">VALUE</p>
+    <p class="onetr" th:text="${human.getPatronymic()}">VALUE</p>
+    <p class="onetr" th:text="${human.getDateOfBirth()}">VALUE</p>
+    <p class="onetr" th:text="${human.getEmail()}">VALUE</p>
+
+    <label>Ставки:</label>
+    <div class="onetr" th:each="sub1 : ${human.rates}">
+        <label th:text="${sub1.getRateValue() + ', id: ' + sub1.getPK_Rate() }" > </label>
+    </div>
+
+    <label>Офисы:</label>
+    <div class="onetr" th:each="off1 : ${human.offices}">
+        <label th:text="${off1.getNumberOffice() + ', id: ' + off1.getPK_Office() }" > </label>
+    </div>
+
+    <label>Контакты:</label>
+    <div class="onetr" th:each="cont1 : ${human.contacts}">
+        <label th:text="${cont1.getValueContact() + ', id: ' + cont1.getPK_Contact() }" > </label>
+    </div>
+</div>
+
+<br/>
+<a th:href="@{/human/{id}/edit(id=${human.getPK_Human()})}">Edit</a>
+
+<form th:method="PATCH" th:action="@{/human/{id}/dismissal(id=${human.getPK_Human()})}">
+    <input type="submit" value="Dismissal"/>
+</form>
+
+<form th:method="DELETE" th:action="@{/human/{id}(id=${human.getPK_Human()})}">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

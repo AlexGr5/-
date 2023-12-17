@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Телефонный справочник</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        .onetr {
+            border-spacing: 5px 20px;
+            border-block-color: black;
+            border: groove;
+            background: #d2d2d2;
+        }
+    </style>
+</head>
+<body>
+
+<form th:method="PATCH" th:action="@{/subdivision/{id}(id=${subdivision.getPK_Subdivision()})}" th:object="${subdivision}">
+    <label class="onetr" for="Name">Enter name subdivision: </label>
+    <input class="onetr" type="text" th:field="*{NameSubdivision}" id="Name"/>
+    <br/>
+    <label class="onetr" for="Adr">Enter kod subdivision: </label>
+    <input class="onetr" type="text" th:field="*{KodSubdivision}" id="Adr"/>
+    <br/>
+    <label class="onetr" for="email">Enter abbreviation: </label>
+    <input class="onetr" type="text" th:field="*{Abbreviation}" id="email"/>
+    <br/>
+    <label class="onetr" for="fsd">Enter email: </label>
+    <input class="onetr" type="text" th:field="*{Email}" id="fsd"/>
+    <br/>
+    <label class="onetr" for="ido">Enter id organization: </label>
+    <input class="onetr" type="text" th:field="*{organizationSub.PK_Organization}" id="ido"/>
+    <br/>
+    <label class="onetr" for="idb">Enter id branch: </label>
+    <input class="onetr" type="text" th:field="*{branchSub.PK_Branch}" id="idb"/>
+    <br/>
+    <label class="onetr" for="ids">Enter id subdivision: </label>
+    <input class="onetr" type="text" th:field="*{subdivisionOne.PK_Subdivision}" id="ids"/>
+    <br/>
+    <input class="onetr" type="submit" value="Update!"/>
+</form>
+
+</body>
+</html>
